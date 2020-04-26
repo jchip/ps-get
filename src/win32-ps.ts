@@ -1,3 +1,4 @@
+/** @ignore *//** */
 /* eslint-disable comma-dangle, no-irregular-whitespace, arrow-parens, no-magic-numbers */
 
 import { execFile } from "child_process";

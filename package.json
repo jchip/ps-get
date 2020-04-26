@@ -1,18 +1,27 @@
 {
   "name": "ps-get",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "Get system processes through ps",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "test": "clap test-only",
     "coverage": "clap check",
     "prepublishOnly": "clap -n build docs && clap check",
-    "docs": "clap xarc/docs"
+    "docs": "clap xarc/docs && touch docs/.nojekyll"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "homepage": "https://jchip.github.io/ps-get/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jchip/ps-get.git"
+  },
+  "keywords": [
+    "ps",
+    "process",
+    "processes"
+  ],
+  "author": "Joel Chen",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@types/chai": "^4.2.11",
@@ -37,6 +46,7 @@
     "source-map-support": "^0.5.16",
     "ts-node": "^8.6.2",
     "typedoc": "^0.17.4",
+    "typedoc-plugin-external-module-name": "^3.0.0",
     "typescript": "^3.8.3"
   },
   "mocha": {
@@ -48,7 +58,9 @@
     "recursive": true
   },
   "files": [
-    "dist"
+    "dist",
+    "docs",
+    "src"
   ],
   "prettier": {
     "printWidth": 100

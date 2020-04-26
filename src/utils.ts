@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module index
+ */
+
 /* eslint-disable comma-dangle, no-irregular-whitespace, arrow-parens, no-magic-numbers */
 
 /**
@@ -29,6 +34,7 @@ export type ProcessTreeInfo = ProcessInfo & {
 };
 
 /**
+ * @ignore
  * parseOutput
  *
  * Parse output from PS program into array of processes

@@ -1,9 +1,19 @@
+/**
+ * @packageDocumentation
+ * @module index
+ */
+
 /* eslint-disable comma-dangle, no-irregular-whitespace, arrow-parens, no-magic-numbers */
 
 import { execFile } from "child_process";
 import { promisify } from "util";
 import { ProcessInfo, ProcessTreeInfo, parsePSOutput } from "./utils";
 import { win32PS } from "./win32-ps";
+
+/** @ignore */
+export { ProcessInfo };
+/** @ignore */
+export { ProcessTreeInfo };
 
 const pExecFile = promisify(execFile);
 
@@ -21,6 +31,9 @@ const psFuncs = {
 };
 
 /**
+ * ps
+ *
+ * Get list of system processes
  *
  * @returns array of processes
  */
@@ -34,7 +47,7 @@ export async function ps(): Promise<ProcessInfo[]> {
  * List all child processes of a process ID
  *
  * @param ppid - ID for parent process
- * @param procs - optional list of processes instead of looking up from system
+ * @param procs - List of processes instead of looking up from system
  *
  * @returns array of children process for ppid
  */
