@@ -1,10 +1,7 @@
 /** @ignore */ /** */
 /* eslint-disable comma-dangle, no-irregular-whitespace, arrow-parens, no-magic-numbers */
 
-import { execFile } from "child_process";
-import { promisify } from "util";
-import { ProcessInfo, parsePSOutput } from "./utils";
-const pExecFile = promisify(execFile);
+import { ProcessInfo, parsePSOutput, pExecFile } from "./utils";
 
 /**
  * win32PSByWmic
@@ -12,10 +9,13 @@ const pExecFile = promisify(execFile);
  * @returns array of processes
  */
 async function win32PSByWmic(): Promise<ProcessInfo[]> {
-  const promise = pExecFile("wmic.exe", ["PROCESS", "GET", "ParentProcessId,ProcessId,Name"]);
-  const { stdout } = await promise;
+  const { stdout, child } = await pExecFile("wmic.exe", [
+    "PROCESS",
+    "GET",
+    "ParentProcessId,ProcessId,Name",
+  ]);
 
-  const wmPid = `${promise.child.pid}`;
+  const wmPid = `${child.pid}`;
   const array = stdout.split("\n");
   // format:
   // Name                                                                ParentProcessId  ProcessId
@@ -49,15 +49,14 @@ async function win32PSByWmic(): Promise<ProcessInfo[]> {
  * @returns array of processes
  */
 async function win32PSByPowerShell(): Promise<ProcessInfo[]> {
-  const promise = pExecFile("powershell.exe", [
+  const { stdout, child } = await pExecFile("powershell.exe", [
     "Get-CimInstance",
     "Win32_Process",
     "|",
     "Format-Table",
     "ParentProcessId,ProcessId,Name",
   ]);
-  const { stdout } = await promise;
-  return parsePSOutput(stdout, promise.child.pid);
+  return parsePSOutput(stdout, child.pid);
 }
 
 /**

@@ -5,26 +5,19 @@
 
 /* eslint-disable comma-dangle, no-irregular-whitespace, arrow-parens, no-magic-numbers */
 
-import { execFile } from "child_process";
-import { promisify } from "util";
-import { ProcessInfo, ProcessTreeInfo, parsePSOutput } from "./utils";
+import { ProcessInfo, ProcessTreeInfo, parsePSOutput, pExecFile } from "./utils";
 import { win32PS } from "./win32-ps";
 
 /** @ignore */
-export { ProcessInfo };
-/** @ignore */
-export { ProcessTreeInfo };
-
-const pExecFile = promisify(execFile);
+export { ProcessInfo, ProcessTreeInfo };
 
 /**
  *
  * @returns array of processes
  */
 async function unixPS(): Promise<ProcessInfo[]> {
-  const promise = pExecFile("ps", ["-e", "-o", "ppid,pid,command"]);
-  const { stdout } = await promise;
-  return parsePSOutput(stdout, promise.child.pid);
+  const { stdout, child } = await pExecFile("ps", ["-e", "-o", "ppid,pid,command"]);
+  return parsePSOutput(stdout, child.pid);
 }
 
 const psFuncs = {

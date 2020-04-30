@@ -1,6 +1,7 @@
 /* eslint-disable comma-dangle, no-irregular-whitespace, arrow-parens, no-magic-numbers */
 
-import { ps, psChildren, getChildrenOfPid, ProcessTreeInfo } from "../../src";
+import { ps, psChildren, getChildrenOfPid } from "../../src";
+import { pExecFile } from "../../src/utils";
 import { expect } from "chai";
 
 describe("ps", function () {
@@ -33,5 +34,14 @@ describe("ps", function () {
       { pid: 900, ppid: 50, command: "child2", level: 3 },
       { pid: 901, ppid: 50, command: "child3", level: 3 },
     ]);
+  });
+
+  it("should throw if execFile can't find binary", async () => {
+    try {
+      await pExecFile("/fooblah");
+      throw new Error("expected failure");
+    } catch {
+      //
+    }
   });
 });

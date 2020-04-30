@@ -3,6 +3,8 @@
  * @module index
  */
 
+import { execFile, ChildProcess } from "child_process";
+
 /* eslint-disable comma-dangle, no-irregular-whitespace, arrow-parens, no-magic-numbers */
 
 /**
@@ -59,4 +61,29 @@ export function parsePSOutput(stdout: string, psPid: number): ProcessInfo[] {
       );
     })
     .filter((x) => x);
+}
+
+export type ExecResult = { stdout: string; stderr: string; child: ChildProcess };
+
+/**
+ * @ignore
+ * pExecFile
+ *
+ * Promisified execFile (cuz Node 10 util.promisify doesn't return child)
+ *
+ * @param file - file to exec
+ * @param args - args to pass to the file
+ * @returns array of processes
+ */
+
+export async function pExecFile(file: string, args?: readonly string[]): Promise<ExecResult> {
+  return new Promise((resolve, reject) => {
+    const child = execFile(file, args, (err, stdout, stderr) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve({ stdout, stderr, child });
+      }
+    });
+  });
 }
