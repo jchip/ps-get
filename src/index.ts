@@ -5,20 +5,12 @@
 
 /* eslint-disable comma-dangle, no-irregular-whitespace, arrow-parens, no-magic-numbers */
 
-import { ProcessInfo, ProcessTreeInfo, parsePSOutput, pExecFile } from "./utils";
+import { ProcessInfo, ProcessTreeInfo } from "./utils";
 import { win32PS } from "./win32-ps";
+import { unixPS } from "./unix-ps";
 
 /** @ignore */
 export { ProcessInfo, ProcessTreeInfo };
-
-/**
- *
- * @returns array of processes
- */
-async function unixPS(): Promise<ProcessInfo[]> {
-  const { stdout, child } = await pExecFile("ps", ["-e", "-o", "ppid,pid,command"]);
-  return parsePSOutput(stdout, child.pid);
-}
 
 const psFuncs = {
   win32: win32PS,
@@ -32,7 +24,7 @@ const psFuncs = {
  * @returns array of processes
  */
 export async function ps(): Promise<ProcessInfo[]> {
-  return await (psFuncs[process.platform] || unixPS());
+  return await (psFuncs[process.platform] || unixPS)();
 }
 
 /**

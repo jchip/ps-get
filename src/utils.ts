@@ -42,6 +42,7 @@ export type ProcessTreeInfo = ProcessInfo & {
  * Parse output from PS program into array of processes
  *
  * @param stdout - output from ps program
+ * @param psPid - PID of the ps program itself to ignore
  *
  * @returns array of processes
  */
@@ -73,9 +74,9 @@ export type ExecResult = { stdout: string; stderr: string; child: ChildProcess }
  *
  * @param file - file to exec
  * @param args - args to pass to the file
+ *
  * @returns array of processes
  */
-
 export async function pExecFile(file: string, args?: readonly string[]): Promise<ExecResult> {
   return new Promise((resolve, reject) => {
     const child = execFile(file, args, (err, stdout, stderr) => {
