@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle, no-irregular-whitespace, arrow-parens, no-magic-numbers */
 
-import { ps, psChildren, ProcessTreeInfo } from "../../src";
+import { ps, psChildren, getChildrenOfPid, ProcessTreeInfo } from "../../src";
 import { expect } from "chai";
 
 describe("ps", function () {
@@ -26,7 +26,7 @@ describe("ps", function () {
       { pid: 901, ppid: 50, command: "child3" },
       { pid: 535, ppid: 99, command: "random" },
     ];
-    const children: ProcessTreeInfo[] = await psChildren(1, procs);
+    const children = getChildrenOfPid(1, procs);
     expect(children).to.deep.equal([
       { pid: 20, ppid: 1, command: "top", level: 1 },
       { pid: 50, ppid: 20, command: "child1", level: 2 },

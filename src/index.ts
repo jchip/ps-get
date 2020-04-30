@@ -43,19 +43,17 @@ export async function ps(): Promise<ProcessInfo[]> {
 }
 
 /**
- * psChildren
+ * getChildrenOfPid
  *
- * List all child processes of a process ID
+ * find all child processes of a process ID from a list
  *
  * @param ppid - ID for parent process
- * @param procs - List of processes instead of looking up from system
+ * @param procs - List of processes
  *
  * @returns array of children process for ppid
  */
-export async function psChildren(ppid: number, procs?: ProcessInfo[]): Promise<ProcessTreeInfo[]> {
+export function getChildrenOfPid(ppid: number, procs: ProcessInfo[]): ProcessTreeInfo[] {
   const levels = { [ppid]: 1 };
-
-  const allProcs = procs || (await ps());
 
   const children = [];
   const used = {};
@@ -64,7 +62,7 @@ export async function psChildren(ppid: number, procs?: ProcessInfo[]): Promise<P
 
   do {
     found = 0;
-    for (const proc of allProcs) {
+    for (const proc of procs) {
       const level = levels[proc.ppid];
       if (!used[proc.pid] && level) {
         children.push({ ...proc, level });
@@ -85,4 +83,17 @@ export async function psChildren(ppid: number, procs?: ProcessInfo[]): Promise<P
       return a.pid - b.pid;
     }
   });
+}
+
+/**
+ * psChildren
+ *
+ * List all child processes of a process ID
+ *
+ * @param ppid - ID for parent process
+ *
+ * @returns array of children process for ppid
+ */
+export async function psChildren(ppid: number): Promise<ProcessTreeInfo[]> {
+  return getChildrenOfPid(ppid, await ps());
 }
