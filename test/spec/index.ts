@@ -4,9 +4,12 @@ import { ps, psChildren, ProcessTreeInfo } from "../../src";
 import { expect } from "chai";
 
 describe("ps", function () {
-  it("should list all processes", async () => {
+  it("should list all processes without ps itself", async () => {
     const procs = await ps();
     expect(procs).to.be.an("Array").that.is.not.empty;
+    expect(procs.find((p) => p.command.startsWith("ps") && p.ppid === process.pid)).to.equal(
+      undefined
+    );
   });
 
   it("should list all children of proc id 1", async () => {

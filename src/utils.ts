@@ -43,13 +43,15 @@ export type ProcessTreeInfo = ProcessInfo & {
  *
  * @returns array of processes
  */
-export function parsePSOutput(stdout: string): ProcessInfo[] {
+export function parsePSOutput(stdout: string, psPid: number): ProcessInfo[] {
+  const sPsPid = `${psPid}`;
   return stdout
     .split("\n")
     .map((x) => {
       const m = x && x.trim().match(/(^[0-9]+)\s+([0-9]+)\s+(.*)/);
       return (
-        m && {
+        m &&
+        m[2] !== sPsPid && {
           pid: parseInt(m[2], 10),
           ppid: parseInt(m[1], 10),
           command: m[3].trim(),

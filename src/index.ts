@@ -22,8 +22,9 @@ const pExecFile = promisify(execFile);
  * @returns array of processes
  */
 async function unixPS(): Promise<ProcessInfo[]> {
-  const { stdout } = await pExecFile("ps", ["-e", "-o", "ppid,pid,command"]);
-  return parsePSOutput(stdout);
+  const promise = pExecFile("ps", ["-e", "-o", "ppid,pid,command"]);
+  const { stdout } = await promise;
+  return parsePSOutput(stdout, promise.child.pid);
 }
 
 const psFuncs = {
