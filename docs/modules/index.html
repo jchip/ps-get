@@ -71,6 +71,7 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="index.html#execresult" class="tsd-kind-icon">Exec<wbr>Result</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="index.html#processinfo" class="tsd-kind-icon">Process<wbr>Info</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="index.html#processtreeinfo" class="tsd-kind-icon">Process<wbr>Tree<wbr>Info</a></li>
 							</ul>
@@ -78,6 +79,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="index.html#getchildrenofpid" class="tsd-kind-icon">get<wbr>Children<wbr>OfPid</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="index.html#ps" class="tsd-kind-icon">ps</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="index.html#pschildren" class="tsd-kind-icon">ps<wbr>Children</a></li>
 							</ul>
@@ -88,12 +90,36 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="execresult" class="tsd-anchor"></a>
+					<h3>Exec<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">Exec<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>child<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ChildProcess</span><span class="tsd-signature-symbol">; </span>stderr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>stdout<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in utils.ts:67</li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>child<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ChildProcess</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>stderr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>stdout<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="processinfo" class="tsd-anchor"></a>
 					<h3>Process<wbr>Info</h3>
 					<div class="tsd-signature tsd-kind-icon">Process<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>command<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>pid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>ppid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jchip/ps-get/blob/6039b1e1/src/utils.ts#L11">utils.ts:11</a></li>
+							<li>Defined in utils.ts:13</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -137,7 +163,7 @@
 					<div class="tsd-signature tsd-kind-icon">Process<wbr>Tree<wbr>Info<span class="tsd-signature-symbol">:</span> <a href="index.html#processinfo" class="tsd-signature-type">ProcessInfo</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>level<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jchip/ps-get/blob/6039b1e1/src/utils.ts#L29">utils.ts:29</a></li>
+							<li>Defined in utils.ts:31</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -150,6 +176,45 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getchildrenofpid" class="tsd-anchor"></a>
+					<h3>get<wbr>Children<wbr>OfPid</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Children<wbr>OfPid<span class="tsd-signature-symbol">(</span>ppid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, procs<span class="tsd-signature-symbol">: </span><a href="index.html#processinfo" class="tsd-signature-type">ProcessInfo</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="index.html#processtreeinfo" class="tsd-signature-type">ProcessTreeInfo</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in index.ts:40</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>getChildrenOfPid</p>
+								</div>
+								<p>find all child processes of a process ID from a list</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>ppid: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>ID for parent process</p>
+									</div>
+								</li>
+								<li>
+									<h5>procs: <a href="index.html#processinfo" class="tsd-signature-type">ProcessInfo</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>List of processes</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="index.html#processtreeinfo" class="tsd-signature-type">ProcessTreeInfo</a><span class="tsd-signature-symbol">[]</span></h4>
+							<p>array of children process for ppid</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="ps" class="tsd-anchor"></a>
 					<h3>ps</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -159,7 +224,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jchip/ps-get/blob/6039b1e1/src/index.ts#L40">index.ts:40</a></li>
+									<li>Defined in index.ts:26</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -177,13 +242,13 @@
 					<a name="pschildren" class="tsd-anchor"></a>
 					<h3>ps<wbr>Children</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">ps<wbr>Children<span class="tsd-signature-symbol">(</span>ppid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, procs<span class="tsd-signature-symbol">?: </span><a href="index.html#processinfo" class="tsd-signature-type">ProcessInfo</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="index.html#processtreeinfo" class="tsd-signature-type">ProcessTreeInfo</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">ps<wbr>Children<span class="tsd-signature-symbol">(</span>ppid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="index.html#processtreeinfo" class="tsd-signature-type">ProcessTreeInfo</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jchip/ps-get/blob/6039b1e1/src/index.ts#L54">index.ts:54</a></li>
+									<li>Defined in index.ts:82</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -198,12 +263,6 @@
 									<h5>ppid: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>ID for parent process</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> procs: <a href="index.html#processinfo" class="tsd-signature-type">ProcessInfo</a><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>List of processes instead of looking up from system</p>
 									</div>
 								</li>
 							</ul>
@@ -228,10 +287,16 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="index.html#execresult" class="tsd-kind-icon">Exec<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="index.html#processinfo" class="tsd-kind-icon">Process<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="index.html#processtreeinfo" class="tsd-kind-icon">Process<wbr>Tree<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="index.html#getchildrenofpid" class="tsd-kind-icon">get<wbr>Children<wbr>OfPid</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="index.html#ps" class="tsd-kind-icon">ps</a>
